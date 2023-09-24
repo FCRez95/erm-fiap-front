@@ -30,43 +30,42 @@ export const login = async (userInfo: any) => {
 	return axios.request<any>(config);
 };
 
-export const addClick = async (newClick: AddClickModel) => {
-  config.url = 'add-click'
-  config.method = 'post'
-  config.data = newClick
-  return axios.request<any>(config)
+export const addClick = async (newClick: AddClickModel, clickAuter: String | null) => {
+	config.url = 'click'
+	config.method = 'post'
+	config.data = newClick
+
+  	if (config.headers) {
+		Object.assign(config.headers, { 'x-access-token': clickAuter })
+	}
+
+  	return axios.request<any>(config)
 }
 
 export const loadUserCampaings = async (idUser: number, tokenAccess: string) => {
 	config.url = `campaing/${idUser}`
 	config.method = 'get'
-  if (config.headers) {
-    Object.assign(config.headers, { 'x-access-token': tokenAccess })
-  }
+	if (config.headers) {
+		Object.assign(config.headers, { 'x-access-token': tokenAccess })
+	}
 	return axios.request<any>(config)
 }
 
 export const loadCampaingSummary = async (idCampaing: number, tokenAccess: string) => {
 	config.url = `click/campaing-summary/${idCampaing}`
 	config.method = 'get'
-  if (config.headers) {
-    Object.assign(config.headers, { 'x-access-token': tokenAccess })
-  }
+	if (config.headers) {
+		Object.assign(config.headers, { 'x-access-token': tokenAccess })
+	}
 	return axios.request<any>(config)
 }
 
-export const loadCampaing = async (idCampaing: number, tokenAccess: string) => {
-	config.url = `load-campaing/${idCampaing}`
-	config.method = 'get'
-  if (config.headers) {
-    Object.assign(config.headers, { 'x-access-token': tokenAccess })
-  }
-	return axios.request<any>(config)
-}
-
-export const createCampaing = async (campaingData: any) => {
+export const createCampaing = async (campaingData: any, tokenAccess: String) => {
 	config.url = 'campaing'
 	config.method = 'post'
 	config.data = campaingData
+	if (config.headers) {
+		Object.assign(config.headers, { 'x-access-token': tokenAccess })
+	}
 	return axios.request<any>(config)
   }

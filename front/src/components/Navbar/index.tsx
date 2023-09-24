@@ -17,7 +17,7 @@ const Navbar = () => {
         </ListItem>
 
         <ListItem>
-          <NavLink to='/links'>
+          <NavLink to='/employees'>
             <PersonIcon style={{ fill: '#ffffff' }}/>
             Colaboradores
           </NavLink>

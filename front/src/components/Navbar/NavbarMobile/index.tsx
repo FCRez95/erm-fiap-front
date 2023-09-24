@@ -15,7 +15,7 @@ const NavbarMobile = () => {
         </ListItem>
 
         <ListItem>
-          <NavLink to='/links' style={{flexDirection: 'column'}}>
+          <NavLink to='/employees' style={{flexDirection: 'column'}}>
             <PersonIcon style={{ fill: '#ffffff' }}/>
             Colaboradores
           </NavLink>

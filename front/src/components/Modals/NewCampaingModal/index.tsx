@@ -1,11 +1,10 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent } from 'react';
 import { useForm } from '../../../hooks/form-hook';
 import { RequireValidator } from '../../../utils/validators';
 import FormInput from '../../FormElements/FormInput';
 import { ContainerNewCampaing, ModalFormContainer, Header, FormContainer, BtnContainer, FormBtn, CancelBtn } from './styles'
 import { User } from '../../../models/user';
 import { createCampaing } from '../../../services';
-import Loading from '../../Loading'
 
 interface Props {
     user?: User[]
@@ -14,7 +13,6 @@ interface Props {
 }
 
 const ModalNewCampaing = ({user, closeModal, updateCampaings}: Props) => {
-    const [requestFinished, setRequestFinished] = useState<Boolean>(false)
     const [formState, inputHandler] = useForm(
         {
             name: {
@@ -35,7 +33,6 @@ const ModalNewCampaing = ({user, closeModal, updateCampaings}: Props) => {
 
     const submitCampaing = async (event: FormEvent) => {
         event?.preventDefault()
-        setRequestFinished(true)
         console.log(formState)
         if (!formState.isValid) {
           alert('Preencha o formulário com dados validos para prosseguir!')
@@ -50,11 +47,12 @@ const ModalNewCampaing = ({user, closeModal, updateCampaings}: Props) => {
         }
         console.log(campaingInfo)
         try {
-            const camapingResponse = await createCampaing(campaingInfo)
-            updateCampaings(camapingResponse.data)
-            setRequestFinished(false)
-            closeModal()
-          console.log(camapingResponse)
+            if (user) {
+                const camapingResponse = await createCampaing(campaingInfo, user[0].tokenAccess)
+                updateCampaings(camapingResponse.data)
+                closeModal()
+                console.log(camapingResponse)
+            }
         } catch (error) {
             console.log(error)
         }
@@ -65,46 +63,42 @@ const ModalNewCampaing = ({user, closeModal, updateCampaings}: Props) => {
             <ModalFormContainer>
                 <Header>Criar nova campanha</Header>
 
-                {requestFinished? (
-                    <FormContainer onSubmit={submitCampaing}>
-                        <FormInput 
-                        id='name' 
-                        type='name'
-                        label='Nome da Campanha'
-                        invalidMessage='Este campo é obrigatório!'
-                        validators={[RequireValidator()]}
-                        onInput={inputHandler}
-                        placeholder='Nome da campanha'
-                        />
+                <FormContainer onSubmit={submitCampaing}>
+                    <FormInput 
+                    id='name' 
+                    type='name'
+                    label='Nome da Campanha'
+                    invalidMessage='Este campo é obrigatório!'
+                    validators={[RequireValidator()]}
+                    onInput={inputHandler}
+                    placeholder='Nome da campanha'
+                    />
 
-                        <FormInput 
-                        id='product' 
-                        type='product'
-                        label='Produto'
-                        invalidMessage='Este campo é obrigatório!'
-                        validators={[RequireValidator()]}
-                        onInput={inputHandler}
-                        placeholder='Produto anunciado'
-                        />
+                    <FormInput 
+                    id='product' 
+                    type='product'
+                    label='Produto'
+                    invalidMessage='Este campo é obrigatório!'
+                    validators={[RequireValidator()]}
+                    onInput={inputHandler}
+                    placeholder='Produto anunciado'
+                    />
 
-                        <FormInput 
-                        id='clickAuther' 
-                        type='clickAuther'
-                        label='Link de Redirecionamento'
-                        invalidMessage='Este campo é obrigatório!'
-                        validators={[RequireValidator()]}
-                        onInput={inputHandler}
-                        placeholder='Link para redirecionar o cliente'
-                        />
+                    <FormInput 
+                    id='clickAuther' 
+                    type='clickAuther'
+                    label='Link de Redirecionamento'
+                    invalidMessage='Este campo é obrigatório!'
+                    validators={[RequireValidator()]}
+                    onInput={inputHandler}
+                    placeholder='Link para redirecionar o cliente'
+                    />
 
-                        <BtnContainer>
-                            <CancelBtn type='button' onClick={closeModal}>Cancelar</CancelBtn>
-                            <FormBtn type="submit">Criar</FormBtn>
-                        </BtnContainer>
-                    </FormContainer>
-                ) : (
-                    <Loading />
-                )}
+                    <BtnContainer>
+                        <CancelBtn type='button' onClick={closeModal}>Cancelar</CancelBtn>
+                        <FormBtn type="submit">Criar</FormBtn>
+                    </BtnContainer>
+                </FormContainer>
             </ModalFormContainer>
         </ContainerNewCampaing>
     )

@@ -36,7 +36,7 @@ const SummaryCard = ({ id, name, user, clickAuther }: Props) => {
       <Header>
         <Title>{name}</Title>
         <CampaingId>id campanha: {id}</CampaingId>
-        <LinkContainer><strong>Link de Redirecionamento:</strong> http://localhost:3000/{clickAuther}</LinkContainer>
+        <LinkContainer><strong>Link de Redirecionamento:</strong> http://localhost:3000/create-click?click_auther={clickAuther}</LinkContainer>
       </Header>
       
       {campaingSummary? (

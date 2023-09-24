@@ -1,6 +1,10 @@
+import { User } from '../../models/user';
 import { Container } from './styles'
 
-const EmplyeesPage = () => {
+interface Props {
+  user?: User[]
+}
+const EmplyeesPage = ({ user }: Props) => {
 
   return (
     <Container>

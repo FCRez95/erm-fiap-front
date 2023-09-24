@@ -33,12 +33,11 @@ export const TimeLine = styled.div`
   padding-top: 10px;
 `
 export const Dots = styled.div`
-  width: 100%;
   display: flex;
+  justify-content: space-around;
 `
 
 export const TimeLineDot = styled.div`
-  width: 25%;
   display: flex;
   justify-content: center;
 `
@@ -50,7 +49,6 @@ export const Dot = styled.div`
   background: white;
 `
 export const LineContainer = styled.div`
-  width: 100%;
   display: flex;
   justify-content: center;
   position: relative;
@@ -59,14 +57,14 @@ export const LineContainer = styled.div`
 
 export const Line = styled.div`
   border-top: 1px solid white;
-  width: 75%;
+  width: 50%;
 `
 
 export const TextLine = styled.div`
   width: 100%;
   align-items: center;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 `
 
 export const TextStep = styled.div`

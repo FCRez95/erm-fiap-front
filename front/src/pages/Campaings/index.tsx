@@ -1,10 +1,10 @@
-import { TabsContainer, CampaingsPageContainer, ContentContainer } from './styles'
+import { BtnContainer, CampaingsPageContainer, ContentContainer, CreateBtn } from './styles'
 import { useEffect, useState } from 'react'
 import CampaingModel from '../../models/campaing'
 import { User } from '../../models/user'
 import { loadUserCampaings } from '../../services'
 import SummaryCard from '../../components/CampaingElements/SummaryCard'
-import Tab from '../../components/Tab'
+import ModalNewCampaing from '../../components/Modals/NewCampaingModal'
 
 interface Props {
   user?: User []
@@ -12,6 +12,7 @@ interface Props {
 
 const CampaingsPage = ({ user }: Props) => {
   const [campaings, setCampaings] = useState<CampaingModel[]>()
+  const [showModal, setShowModal] = useState<Boolean>(false)
 
   useEffect(() => {
     if(user) {
@@ -26,11 +27,19 @@ const CampaingsPage = ({ user }: Props) => {
     }
   }, [user])
 
+  const closeModal = () => setShowModal(false)
+
+  const updateCampaingsList = (newCampaing: any) => {
+    let newCampaingsList = campaings
+    newCampaingsList?.push(newCampaing)
+    setCampaings(newCampaingsList)
+  }
+
   return (
     <CampaingsPageContainer>
-      <TabsContainer>
-        <Tab text='Taboola' isSelected={true} onClick={() => {}} />
-      </TabsContainer>
+      <BtnContainer>
+        <CreateBtn onClick={() => {setShowModal(true)}}>Criar Campanha</CreateBtn>
+      </BtnContainer>
     
       <ContentContainer>
         {campaings? (
@@ -41,6 +50,12 @@ const CampaingsPage = ({ user }: Props) => {
           'Nenhuma campanha foi criada até o momento.'
         )}
       </ContentContainer>
+
+      
+      {showModal && (
+        <ModalNewCampaing user={user} closeModal={closeModal} updateCampaings={updateCampaingsList}/>
+      )}
+      
     </CampaingsPageContainer>
   )
 }

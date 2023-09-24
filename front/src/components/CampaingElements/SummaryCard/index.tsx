@@ -20,6 +20,7 @@ const SummaryCard = ({ id, name, user }: Props) => {
 
   useEffect(() => {
     if(user) {
+      console.log(id)
       loadCampaingSummary(id, user[0].tokenAccess)
       .then(resp => {
         setCampaingSummary(resp.data)
@@ -31,12 +32,8 @@ const SummaryCard = ({ id, name, user }: Props) => {
     }
   }, [id, user])
 
-  const redirectPage = (idCampaing: number) => {
-    navigate('/campaings/' + idCampaing, {state: { name: name }} )
-  }
-
   return (
-    <CardContainer onClick={() => redirectPage(id)}>
+    <CardContainer>
       <Header>
         <Title>{name}</Title>
         <CampaingId>id campanha: {id}</CampaingId>
@@ -49,7 +46,7 @@ const SummaryCard = ({ id, name, user }: Props) => {
           <Footer>
             <FooterInfo style={{backgroundColor: '#3f3f3f'}}>
               <FooterText>Taxa de conversão</FooterText>
-              <FooterNumber>{JSON.stringify(campaingSummary.totalPaidClicks/campaingSummary.totalClicks*100).substring(0,5)}%</FooterNumber>
+              <FooterNumber>{campaingSummary.totalClicks !== 0? JSON.stringify(campaingSummary.totalPaidClicks/campaingSummary.totalClicks*100).substring(0,5) : 0}%</FooterNumber>
             </FooterInfo>
 
             <FooterInfo>

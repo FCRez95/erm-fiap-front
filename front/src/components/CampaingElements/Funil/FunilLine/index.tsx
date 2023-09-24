@@ -9,10 +9,8 @@ interface Props {
     return (
       <FunilContainer>
         <TitleLine>
-          <TitleStep>Noticias</TitleStep>
-          <TitleStep>Compra</TitleStep>
-          <TitleStep>Checkout</TitleStep>
-          <TitleStep>Pagos</TitleStep>
+          <TitleStep>Total de Clicks</TitleStep>
+          <TitleStep>Clicks Pagos</TitleStep>
         </TitleLine>
 
         <TimeLine>
@@ -21,14 +19,6 @@ interface Props {
               <Dot></Dot>
             </TimeLineDot>
             
-            <TimeLineDot>
-              <Dot></Dot>
-            </TimeLineDot>
-
-            <TimeLineDot>
-              <Dot></Dot>
-            </TimeLineDot>
-
             <TimeLineDot>
               <Dot></Dot>
             </TimeLineDot>
@@ -56,63 +46,3 @@ interface Props {
   }
   
   export default FunilLine
-
-  /* <FunilStep>
-            <TitleStep>Notícias</TitleStep>
-
-            <TimeLineDot>
-              <Dot></Dot>
-              <Line></Line>
-            </TimeLineDot>
-
-            <InfoStep>
-              
-            </InfoStep>
-        </FunilStep>
-
-        <FunilStep>
-            <TitleStep>Compra</TitleStep>
-
-            <TimeLineDot>
-              <Dot></Dot>
-              <Line></Line>
-            </TimeLineDot>
-            
-            <InfoStep>
-              <InfoNumber>{campaingSummary.totalProductPage}</InfoNumber>
-              <InfoText>Pessoas</InfoText>
-              <InfoNumber></InfoNumber>
-              <InfoText></InfoText>
-            </InfoStep>
-        </FunilStep>
-
-        <FunilStep>
-            <TitleStep>Checkout</TitleStep>
-
-            <TimeLineDot>
-              <Dot></Dot>
-              <Line></Line>
-            </TimeLineDot>
-            
-            <InfoStep>
-              <InfoNumber>{campaingSummary.totalCheckoutPage}</InfoNumber>
-              <InfoText>Pessoas</InfoText>
-              <InfoNumber></InfoNumber>
-              <InfoText></InfoText>
-            </InfoStep>
-        </FunilStep>
-
-        <FunilStep>
-            <TitleStep>Pagos</TitleStep>
-
-            <TimeLineDot>
-              <Dot></Dot>
-            </TimeLineDot>
-            
-            <InfoStep>
-              <InfoNumber>{campaingSummary.totalPaidClicks}</InfoNumber>
-              <InfoText>Pessoas</InfoText>
-              <InfoNumber></InfoNumber>
-              <InfoText></InfoText>
-            </InfoStep>
-        </FunilStep> */

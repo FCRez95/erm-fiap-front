@@ -3,7 +3,8 @@ import styled from 'styled-components'
 export const FunilContainer = styled.div`
   padding: 0px 15px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 15px;
 
   @media screen and (max-width: 550px) {
     display: none;

@@ -63,3 +63,10 @@ export const loadCampaing = async (idCampaing: number, tokenAccess: string) => {
   }
 	return axios.request<any>(config)
 }
+
+export const createCampaing = async (campaingData: any) => {
+	config.url = 'campaing'
+	config.method = 'post'
+	config.data = campaingData
+	return axios.request<any>(config)
+  }

@@ -9,7 +9,7 @@ const FunilCards = ({ campaingSummary }: Props) => {
   return (
 		<FunilContainer>
 			<FunilStep>
-				<TitleStep>Página de Noticias</TitleStep>
+				<TitleStep>Total de Clicks</TitleStep>
 				
 				<ContentStep>
 					<ContentNumber>{campaingSummary.totalClicks}</ContentNumber>
@@ -18,7 +18,7 @@ const FunilCards = ({ campaingSummary }: Props) => {
 			</FunilStep>
 
 			<LastFunilStep>
-				<TitleStep>Pagos</TitleStep>
+				<TitleStep>Clicks Pagos</TitleStep>
 
 				<ContentStep>
 					<ContentNumber>{campaingSummary.totalPaidClicks}</ContentNumber>

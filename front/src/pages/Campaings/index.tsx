@@ -44,7 +44,7 @@ const CampaingsPage = ({ user }: Props) => {
       <ContentContainer>
         {campaings? (
           campaings.map((campaing, index) => (
-            <SummaryCard key={index} id={campaing.id} name={campaing.name} user={user} />
+            <SummaryCard key={index} id={campaing.id} name={campaing.name} user={user} clickAuther={campaing.clickAuther} />
           ))
         ) : (
           'Nenhuma campanha foi criada até o momento.'

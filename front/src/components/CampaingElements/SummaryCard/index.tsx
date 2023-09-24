@@ -1,22 +1,21 @@
 import { useEffect, useState } from 'react'
-import { CardContainer, Header, Title, CampaingId, Footer, FooterInfo, FooterNumber, FooterText } from './styles'
+import { CardContainer, Header, Title, CampaingId, Footer, FooterInfo, FooterNumber, FooterText, LinkContainer } from './styles'
 import { CampaingSummaryModel } from '../../../models/campaing-summary'
 import { loadCampaingSummary } from '../../../services'
 import { User } from '../../../models/user'
 import Loading from '../../Loading'
-import { useNavigate } from 'react-router-dom';
 import FunilCards from '../Funil/FunilCards'
 import FunilLine from '../Funil/FunilLine'
 
 interface Props {
   id: number
   name: string
+  clickAuther: string
   user?: User[]
 }
 
-const SummaryCard = ({ id, name, user }: Props) => {
+const SummaryCard = ({ id, name, user, clickAuther }: Props) => {
   const [campaingSummary, setCampaingSummary] = useState<CampaingSummaryModel>()
-  const navigate = useNavigate()
 
   useEffect(() => {
     if(user) {
@@ -37,6 +36,7 @@ const SummaryCard = ({ id, name, user }: Props) => {
       <Header>
         <Title>{name}</Title>
         <CampaingId>id campanha: {id}</CampaingId>
+        <LinkContainer><strong>Link de Redirecionamento:</strong> http://localhost:3000/{clickAuther}</LinkContainer>
       </Header>
       
       {campaingSummary? (

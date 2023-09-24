@@ -32,6 +32,15 @@ export const CampaingId = styled.div`
   font-size: 12px;
 ` 
 
+export const LinkContainer = styled.div`
+  font-size: 12px;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+` 
+
 export const Footer = styled.div`
   color: white;
   padding: 15px;

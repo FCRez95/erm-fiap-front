@@ -77,4 +77,23 @@ export const createCampaing = async (campaingData: any, tokenAccess: String) => 
 		Object.assign(config.headers, { 'x-access-token': tokenAccess })
 	}
 	return axios.request<any>(config)
-  }
+}
+
+export const createEmployee = async (userInfo: any, tokenAccess: String) => {
+	config.url = 'users'
+	config.method = 'post'
+	config.data = userInfo
+	if (config.headers) {
+		Object.assign(config.headers, { 'x-access-token': tokenAccess })
+	}
+	return axios.request<any>(config)
+}
+
+export const getUsers = async (tokenAccess: String) => {
+	config.url = 'users'
+	config.method = 'get'
+	if (config.headers) {
+		Object.assign(config.headers, { 'x-access-token': tokenAccess })
+	}
+	return axios.request<any>(config)
+}

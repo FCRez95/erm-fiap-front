@@ -56,7 +56,7 @@ const ModalNewCampaing = ({user, closeModal, updateCampaings}: Props) => {
         } catch (error) {
             console.log(error)
         }
-      }
+    }
 
     return (
         <ContainerNewCampaing>

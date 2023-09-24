@@ -132,7 +132,3 @@ const submitNewEmployee = async (event: FormEvent) => {
 }
 
 export default EmplyeesPage;
-
-/* 
-- Criar e povoar tabela de usuários
-*/

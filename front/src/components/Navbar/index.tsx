@@ -4,8 +4,13 @@ import PersonIcon from '@mui/icons-material/Person';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { db } from '../../db/db';
+import { User } from '../../models/user';
 
-const Navbar = () => {
+interface Props {
+  user?: User[] 
+}
+
+const Navbar = ({ user }: Props) => {
   const navigate = useNavigate()
 
   const signOutHandler = () => {
@@ -32,12 +37,15 @@ const Navbar = () => {
           </NavLink>
         </ListItem>
 
-        <ListItem>
-          <NavLink to='/employees'>
-            <PersonIcon style={{ fill: '#ffffff' }}/>
-            Colaboradores
-          </NavLink>
-        </ListItem>
+        {user && user[0].type === "adm" && (
+          <ListItem>
+            <NavLink to='/employees'>
+              <PersonIcon style={{ fill: '#ffffff' }}/>
+              Colaboradores
+            </NavLink>
+          </ListItem>
+        )}
+        
       </LinksContainer>
 
       <LogoutBtn onClick={() => signOutHandler()}>

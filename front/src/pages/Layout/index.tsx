@@ -26,7 +26,7 @@ const Layout = ({ user }: Props) => {
       {user && user.length > 0 &&
         <>
           <Header />
-          <Navbar />
+          <Navbar user={user} />
           <NavbarMobile />
         </>
       }

@@ -51,6 +51,15 @@ export const loadUserCampaings = async (idUser: number, tokenAccess: string) => 
 	return axios.request<any>(config)
 }
 
+export const loadCampaings = async (tokenAccess: string) => {
+	config.url = `campaing`
+	config.method = 'get'
+	if (config.headers) {
+		Object.assign(config.headers, { 'x-access-token': tokenAccess })
+	}
+	return axios.request<any>(config)
+}
+
 export const loadCampaingSummary = async (idCampaing: number, tokenAccess: string) => {
 	config.url = `click/campaing-summary/${idCampaing}`
 	config.method = 'get'

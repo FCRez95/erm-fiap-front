@@ -2,7 +2,7 @@ import { BtnContainer, CampaingsPageContainer, ContentContainer, CreateBtn } fro
 import { useEffect, useState } from 'react'
 import CampaingModel from '../../models/campaing'
 import { User } from '../../models/user'
-import { loadUserCampaings } from '../../services'
+import { loadCampaings, loadUserCampaings } from '../../services'
 import SummaryCard from '../../components/CampaingElements/SummaryCard'
 import ModalNewCampaing from '../../components/Modals/NewCampaingModal'
 
@@ -15,8 +15,17 @@ const CampaingsPage = ({ user }: Props) => {
   const [showModal, setShowModal] = useState<Boolean>(false)
 
   useEffect(() => {
-    if(user) {
+    if(user && user[0].type === "cli") {
       loadUserCampaings(user[0].id, user[0].tokenAccess)
+      .then(resp => {
+        console.log(resp.data)
+        setCampaings(resp.data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    } else if (user && user[0].type === "adm") {
+      loadCampaings(user[0].tokenAccess)
       .then(resp => {
         console.log(resp.data)
         setCampaings(resp.data)

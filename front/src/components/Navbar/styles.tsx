@@ -56,3 +56,18 @@ export const ListItem = styled.div`
     background-color: #757575;
   }
 `
+
+export const LogoutBtn = styled.button`
+  border: 1px solid transparent;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  height: 70px;
+  padding-left: 30px;
+  text-transform: uppercase;
+  padding-right: 30px;
+  background-color: #222222;
+  font-size: 16px;
+  cursor: pointer;
+`
